@@ -33,11 +33,16 @@ state = 0;
 open = instance_create(x,y,obj_cupboard_open);
 open.image_angle = image_angle;
 
+doors = instance_create(x,y,obj_cupboard_doors);
+doors.image_angle = image_angle;
+
 closed = instance_create(x,y,obj_cupboard_closed);
 closed.image_angle = image_angle;
 
 //only set closed visible for now
 instance_deactivate_object(open);
+instance_deactivate_object(doors);
+
 instance_activate_object(closed);
 
 
@@ -71,19 +76,35 @@ if(point_distance(x,y,obj_player.x, obj_player.y) &lt;=obj_player.reach)
 {
 
 //Now check to make sure nothing is in way of the door for closing
-var colCheck = collision_rectangle(x + (sprite_xoffset),y - (sprite_yoffset),x + (sprite_xoffset) + 4, y+sprite_yoffset,obj_player, false, true);
+if(state==1){
+var colCheck = collision_rectangle(x + (sprite_xoffset),y - (sprite_yoffset),x + (sprite_xoffset) + 6, y+sprite_yoffset-2,obj_player, false, true);
+}
+
+// need to check for each side of the door as well for opening
+if(state==0)
+{
+
+var colCheck = collision_rectangle(x + (sprite_xoffset)+2,y - sprite_yoffset,x + (sprite_xoffset) + 15, y-sprite_yoffset+2, obj_player, false, true);
+
+if(!colCheck) colCheck = collision_rectangle(x + (sprite_xoffset)+2,y + sprite_yoffset-2,x + (sprite_xoffset) + 15, y+sprite_yoffset-4, obj_player, false, true);
+
+}
+
+
 
 //We only care about colCheck if doors are going to be closed
 // so if doors are already closed (state==0) then we proceed
-if((!colCheck &amp;&amp; state==1) || state ==0){
+if(!colCheck ){
 
     if(state==0){
         instance_deactivate_object(closed);
         instance_activate_object(open);
+        instance_activate_object(doors);
         state=1;
     }else{
         state=0;
         instance_deactivate_object(open);
+        instance_deactivate_object(doors);
         instance_activate_object(closed);
     }
 }

@@ -4,8 +4,8 @@
 CollidableObjects = ds_list_create();
 
 ds_list_add(CollidableObjects, col_solid_block);
-ds_list_add(CollidableObjects, obj_cupboard_open);
-ds_list_add(CollidableObjects, obj_cupboard_closed);
+//ds_list_add(CollidableObjects, obj_cupboard_open);
+//ds_list_add(CollidableObjects, obj_cupboard_closed);
 
 var i
 

@@ -41,9 +41,12 @@
     </objects>
     <object>objects\obj_debug</object>
     <objects name="Furniture">
-      <object>objects\obj_cupboard_open</object>
-      <object>objects\obj_cupboard_closed</object>
-      <object>objects\obj_cupboard</object>
+      <objects name="Cupboard">
+        <object>objects\obj_cupboard_open</object>
+        <object>objects\obj_cupboard_closed</object>
+        <object>objects\obj_cupboard_doors</object>
+        <object>objects\obj_cupboard</object>
+      </objects>
     </objects>
   </objects>
   <rooms name="rooms">
