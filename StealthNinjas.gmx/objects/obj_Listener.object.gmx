@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>depth = 1
+noise_level=64;
 </string>
           </argument>
         </arguments>
@@ -49,7 +50,27 @@
           <argument>
             <kind>1</kind>
             <string>//check all obj_soundWave for collision
+if(instance_exists(obj_soundWave))
+{
+    //how many sounds are there
+    total_sounds = instance_number(obj_soundWave);
+    
+    //loop through them all
+    for(i = 0; i &lt; total_sounds; i++)
+    {
+        //find the object instance
+        k= instance_find(obj_soundWave, i);
+        
+        //close enough for collision
+        if(point_distance(x,y, (k).x, (k).y) &lt;= noise_level + (k).noise_level)
+        {
+            show_debug_message("collision found!");
+        }
+    
+    
+    }
 
+}
 
 </string>
           </argument>

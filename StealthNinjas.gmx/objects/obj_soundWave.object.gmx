@@ -28,10 +28,7 @@
             <string>noise_level=0;
 max_noise_level=0;
 
-if(ds_list_find_index(obj_Manager.SoundWaves, instance_id)==-1)
-{
-    ds_list_add(obj_Manager.SoundWaves, instance_id);
-}
+
 </string>
           </argument>
         </arguments>
@@ -54,12 +51,7 @@ if(ds_list_find_index(obj_Manager.SoundWaves, instance_id)==-1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>i = ds_list_find_index(obj_Manager.SoundWaves, instance_id)
-if(i!=-1)
-{
-    ds_list_delete(obj_Manager.SoundWaves, i);
-}
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>
@@ -83,35 +75,6 @@ if(i!=-1)
             <kind>1</kind>
             <string>noise_level+=.5;
 
-//determine if circle intercept
-var i;
-for (i = 0; i &lt; instance_number(obj_Listener); i += 1)
-{
-//test against each found listener
-
- obj = instance_find(obj_Listener, i);
-if(obj!=noone){
-ii = instance_id[obj];
-
-if(ii!=noone)
-{
-   
-distanceX = x -  ii.x;
-distanceY = y - ii.y;
-radiusSum = noise_level + 64;
-
-    if(distanceX * distanceX + distanceY * distanceY &lt;= radiusSum * radiusSum)
-    {
-        //true intersect
-    }else
-    {
-        //false
-        
-    }
-     
-        }
-}        
-}
 
 if(noise_level &gt;= max_noise_level)
 {
