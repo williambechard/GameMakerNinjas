@@ -4,6 +4,7 @@
 if(place_meeting(x,y,col_hiding_block)){hidden = true};
 else{hidden = false};
 //make the necessary adjustements
+
 if(hidden)
 {
     max_speed = max_speed_hidden;
@@ -11,6 +12,10 @@ if(hidden)
 }
 else
 {
-    max_speed = max_speed_normal;
+    //ensure we arent slow walk already
+   if(!obj_player.crouched){
+     max_speed = max_speed_normal;
+     }
+    
     skin.image_alpha = 1.0;
 }

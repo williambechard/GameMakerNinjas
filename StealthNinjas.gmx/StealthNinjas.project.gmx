@@ -6,16 +6,26 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\spr_player_skin</sprite>
     <sprites name="Collision">
       <sprite>sprites\spr_collision_hide</sprite>
       <sprite>sprites\spr_player_collision</sprite>
     </sprites>
-    <sprite>sprites\spr_player_collider</sprite>
-    <sprite>sprites\spr_cupboard_open</sprite>
-    <sprite>sprites\spr_cupboard_closed</sprite>
-    <sprite>sprites\spr_cupboard_top</sprite>
-    <sprite>sprites\spr_cupboard_doors_open</sprite>
+    <sprites name="Player">
+      <sprite>sprites\spr_player_collider</sprite>
+      <sprite>sprites\spr_player_skin</sprite>
+    </sprites>
+    <sprites name="Furniture">
+      <sprites name="Cupboard">
+        <sprite>sprites\spr_cupboard_open</sprite>
+        <sprite>sprites\spr_cupboard_top</sprite>
+        <sprite>sprites\spr_cupboard_closed</sprite>
+        <sprite>sprites\spr_cupboard_doors_open</sprite>
+      </sprites>
+    </sprites>
+    <sprites name="Misc">
+      <sprite>sprites\spr_Listen</sprite>
+    </sprites>
+    <sprite>sprites\spr_Wave</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -29,17 +39,16 @@
     <scripts name="General Scripts">
       <script>scripts\scr_check_collision.gml</script>
     </scripts>
+    <scripts name="Enemy">
+      <script>scripts\SoundWaveAdd.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
-    <object>objects\obj_player</object>
-    <object>objects\obj_player_camera</object>
-    <object>objects\obj_player_skin</object>
     <objects name="Collision">
       <object>objects\object5</object>
       <object>objects\col_solid_block</object>
       <object>objects\col_hiding_block</object>
     </objects>
-    <object>objects\obj_debug</object>
     <objects name="Furniture">
       <objects name="Cupboard">
         <object>objects\obj_cupboard_open</object>
@@ -47,6 +56,20 @@
         <object>objects\obj_cupboard_doors</object>
         <object>objects\obj_cupboard</object>
       </objects>
+    </objects>
+    <objects name="Misc">
+      <object>objects\obj_debug</object>
+      <object>objects\obj_Manager</object>
+    </objects>
+    <objects name="Player">
+      <object>objects\obj_player_skin</object>
+      <object>objects\obj_player_camera</object>
+      <object>objects\obj_player</object>
+    </objects>
+    <object>objects\obj_soundWave</object>
+    <objects name="Enemy">
+      <object>objects\obj_ROOT_Enemy</object>
+      <object>objects\obj_Listener</object>
     </objects>
   </objects>
   <rooms name="rooms">

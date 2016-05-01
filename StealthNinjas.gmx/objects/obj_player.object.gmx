@@ -30,6 +30,11 @@ camera = instance_create(x,y, obj_player_camera);
 //create the player skin
 skin = instance_create(x,y, obj_player_skin);
 
+crouched = false;
+
+XprevLocation = x;
+YprevLocation = y;
+
 //speed variabels
 move_speed = 1;
 max_speed = 2; //This is the variabel we check
@@ -66,6 +71,18 @@ if(vspeed!=0 or hspeed !=0)
 }else
 {
     noise_level =(max_speed/2) *10;
+}
+
+
+//check for distance since last movement
+if(point_distance(XprevLocation,YprevLocation, (x), (y))&gt;16 + (max_speed*4))
+{
+    XprevLocation = x;
+    YprevLocation = y;
+    var footsteps = instance_create(x,y,obj_soundWave);
+    
+    footsteps.max_noise_level = max_speed * 20;
+    footsteps.noise_level = 0
 }
 
 

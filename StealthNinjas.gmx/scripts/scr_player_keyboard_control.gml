@@ -8,8 +8,17 @@ key_d = keyboard_check(ord('D'));
 key_e = keyboard_check(ord('E'));
 key_ctrl = keyboard_check(vk_control);
 
+
+if(keyboard_check_released(vk_control))
+{
+    obj_player.crouched =false;
+    max_speed = max_speed_normal;
+}
 // move with input
-if(key_ctrl){max_speed = max_speed_hidden};
+if(key_ctrl){
+max_speed = max_speed_hidden;
+obj_player.crouched =true;}
+
 if(key_w){ vspeed -= move_speed};
 if(key_d){ hspeed += move_speed};
 if(key_s){vspeed += move_speed};
