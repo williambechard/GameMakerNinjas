@@ -28,7 +28,37 @@
             <string>noise_level=0;
 max_noise_level=0;
 
-SoundWaveAdd(instance_id);
+if(ds_list_find_index(obj_Manager.SoundWaves, instance_id)==-1)
+{
+    ds_list_add(obj_Manager.SoundWaves, instance_id);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>i = ds_list_find_index(obj_Manager.SoundWaves, instance_id)
+if(i!=-1)
+{
+    ds_list_delete(obj_Manager.SoundWaves, i);
+}
 </string>
           </argument>
         </arguments>
@@ -53,6 +83,35 @@ SoundWaveAdd(instance_id);
             <kind>1</kind>
             <string>noise_level+=.5;
 
+//determine if circle intercept
+var i;
+for (i = 0; i &lt; instance_number(obj_Listener); i += 1)
+{
+//test against each found listener
+
+ obj = instance_find(obj_Listener, i);
+if(obj!=noone){
+ii = instance_id[obj];
+
+if(ii!=noone)
+{
+   
+distanceX = x -  ii.x;
+distanceY = y - ii.y;
+radiusSum = noise_level + 64;
+
+    if(distanceX * distanceX + distanceY * distanceY &lt;= radiusSum * radiusSum)
+    {
+        //true intersect
+    }else
+    {
+        //false
+        
+    }
+     
+        }
+}        
+}
 
 if(noise_level &gt;= max_noise_level)
 {

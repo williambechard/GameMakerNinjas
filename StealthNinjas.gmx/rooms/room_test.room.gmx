@@ -226,6 +226,7 @@
     <instance objName="col_hiding_block" x="224" y="288" name="inst_051F7A8E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="col_hiding_block" x="240" y="272" name="inst_F942F431" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ROOT_Enemy" x="464" y="256" name="inst_FF6D2441" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Manager" x="168" y="96" name="inst_EFB0EF4E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="background0" x="160" y="256" w="16" h="16" xo="0" yo="16" id="10000001" name="inst_6C51B5E4" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
