@@ -26,6 +26,9 @@
       <sprite>sprites\spr_Listen</sprite>
     </sprites>
     <sprite>sprites\spr_Wave</sprite>
+    <sprites name="Enemy">
+      <sprite>sprites\spr_Enemy1</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -38,6 +41,7 @@
     </scripts>
     <scripts name="General Scripts">
       <script>scripts\scr_check_collision.gml</script>
+      <script>scripts\scr_Find_Object.gml</script>
     </scripts>
     <scripts name="Enemy">
       <script>scripts\SoundWaveAdd.gml</script>
@@ -70,6 +74,7 @@
     <objects name="Enemy">
       <object>objects\obj_ROOT_Enemy</object>
       <object>objects\obj_Listener</object>
+      <object>objects\obj_Enemy1</object>
     </objects>
   </objects>
   <rooms name="rooms">
