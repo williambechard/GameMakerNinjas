@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>iangle = image_angle;
+idirection = direction;
 alert=false;
 targetDirection=0;
 
@@ -54,7 +55,8 @@ targetDirection=0;
             <kind>1</kind>
             <string>//Listen.x = x;
 //Listen.y = y;
-
+iangle = image_angle;
+idirection = direction;
 //if alerted turn toward sound
 if(alert)
 {
@@ -63,7 +65,13 @@ if(alert)
  //increment direction toward goal
  
  show_debug_message(string(targetDirection));
- image_angle = targetDirection;
+ //image_angle = targetDirection;
+// timeline_index = tl_RotateToSound;
+// timeline_position = 0;
+// timeline_running = true;
+// timeline_loop = false;
+scr_gradually_turn(self.id, targetDirection, 10.0, 1.0);
+ 
  
 }
 </string>

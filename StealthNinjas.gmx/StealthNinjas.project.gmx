@@ -29,6 +29,9 @@
     <sprites name="Enemy">
       <sprite>sprites\spr_Enemy1</sprite>
     </sprites>
+    <sprites name="Scenery">
+      <sprite>sprites\spr_Bush</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -42,6 +45,7 @@
     <scripts name="General Scripts">
       <script>scripts\scr_check_collision.gml</script>
       <script>scripts\scr_Find_Object.gml</script>
+      <script>scripts\scr_gradually_turn.gml</script>
     </scripts>
     <scripts name="Enemy">
       <script>scripts\SoundWaveAdd.gml</script>
@@ -76,7 +80,13 @@
       <object>objects\obj_Listener</object>
       <object>objects\obj_Enemy1</object>
     </objects>
+    <objects name="Scenery">
+      <object>objects\obj_Bush</object>
+    </objects>
   </objects>
+  <timelines name="timelines">
+    <timeline>timelines\tl_RotateToSound</timeline>
+  </timelines>
   <rooms name="rooms">
     <room>rooms\room_test</room>
   </rooms>
