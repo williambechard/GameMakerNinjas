@@ -85,23 +85,7 @@
     <instance objName="col_solid_block" x="504" y="216" name="inst_03E359EC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="col_solid_block" x="520" y="216" name="inst_997E2320" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="col_solid_block" x="536" y="216" name="inst_3668FB0B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="col_solid_block" x="168" y="216" name="inst_6A5D3F96" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="col_solid_block" x="168" y="232" name="inst_4DF649ED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="col_solid_block" x="168" y="248" name="inst_D8ECC160" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="col_solid_block" x="168" y="280" name="inst_FABBC97F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="col_solid_block" x="168" y="296" name="inst_2E555A29" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="col_solid_block" x="168" y="264" name="inst_614C2893" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="col_solid_block" x="168" y="312" name="inst_3819DDA5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="col_solid_block" x="168" y="328" name="inst_84CB7FB5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="col_solid_block" x="168" y="344" name="inst_B156666A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="col_solid_block" x="168" y="360" name="inst_C729FA2C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="col_solid_block" x="168" y="376" name="inst_90F7F657" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="col_solid_block" x="168" y="392" name="inst_A02A3BCA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="col_solid_block" x="168" y="408" name="inst_38741396" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="col_solid_block" x="168" y="440" name="inst_CCC6AFD7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="col_solid_block" x="168" y="424" name="inst_2C6237FE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="col_solid_block" x="168" y="456" name="inst_CCD8E2C6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="col_solid_block" x="168" y="472" name="inst_048F1F48" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="col_solid_block" x="168" y="336" name="inst_6A5D3F96" locked="0" code="" scaleX="0.933333337306976" scaleY="18.2000007629395" colour="4294967295" rotation="0"/>
     <instance objName="col_solid_block" x="200" y="472" name="inst_64D16212" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="col_solid_block" x="184" y="472" name="inst_16A5833C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="col_solid_block" x="216" y="472" name="inst_37845BD2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -232,6 +216,8 @@
     <instance objName="obj_Bush" x="432" y="352" name="inst_AA18699B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Bush" x="448" y="352" name="inst_768A18D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Bush" x="416" y="368" name="inst_47DEF1DB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="col_solid_block" x="440" y="361" name="inst_192DF097" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="col_solid_block" x="425" y="377" name="inst_4876E750" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="background0" x="160" y="256" w="16" h="16" xo="0" yo="16" id="10000001" name="inst_6C51B5E4" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

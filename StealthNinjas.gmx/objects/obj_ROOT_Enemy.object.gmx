@@ -30,7 +30,14 @@ idirection = direction;
 alert=false;
 targetDirection=0;
 
-//Listen = instance_create(x, y, obj_Listener);
+sight_cone_left = 60;
+sight_cone_right = -60;
+
+skin = instance_create(x,y,obj_Enemy1_skin);
+
+skin.parent = id;
+
+in_cone=false;
 </string>
           </argument>
         </arguments>
@@ -58,20 +65,22 @@ targetDirection=0;
 iangle = image_angle;
 idirection = direction;
 //if alerted turn toward sound
-if(alert)
+
+scr_enemy_see_player();
+
+if(alert &amp;&amp; !in_cone)
 {
  //image_angle = point_direction(x,y,obj_player.x,obj_player.y);   
  
  //increment direction toward goal
  
- show_debug_message(string(targetDirection));
+ //show_debug_message(string(targetDirection));
  //image_angle = targetDirection;
 // timeline_index = tl_RotateToSound;
 // timeline_position = 0;
 // timeline_running = true;
 // timeline_loop = false;
 scr_gradually_turn(self.id, targetDirection, 10.0, 1.0);
- 
  
 }
 </string>

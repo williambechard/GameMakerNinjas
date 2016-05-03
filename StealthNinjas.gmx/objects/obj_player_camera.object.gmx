@@ -25,17 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(mouse_check_button(mb_right))
-{
-    view_xview[0] = (obj_player.x +((mouse_x-obj_player.x)/3))-view_wview[0]/2;
-    view_yview[0] = (obj_player.y + ((mouse_y-obj_player.y)/3))-view_hview[0]/2;
+            <string>//if(mouse_check_button(mb_right))
+//{
+//    view_xview[0] = (obj_player.x +((mouse_x-obj_player.x)/3))-view_wview[0]/2;
+//    view_yview[0] = (obj_player.y + ((mouse_y-obj_player.y)/3))-view_hview[0]/2;
 
-}
-else
-{
+//}
+//else
+//{
     view_xview[0] = (obj_player.x+((mouse_x-obj_player.x)/6))-view_wview[0]/2;
     view_yview[0] = (obj_player.y+((mouse_y-obj_player.y)/6))-view_hview[0]/2;
-}
+//}
 </string>
           </argument>
         </arguments>

@@ -32,6 +32,7 @@
     <sprites name="Scenery">
       <sprite>sprites\spr_Bush</sprite>
     </sprites>
+    <sprite>sprites\spr_Kunai</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -49,6 +50,7 @@
     </scripts>
     <scripts name="Enemy">
       <script>scripts\SoundWaveAdd.gml</script>
+      <script>scripts\scr_enemy_see_player.gml</script>
     </scripts>
   </scripts>
   <objects name="objects">
@@ -68,6 +70,9 @@
     <objects name="Misc">
       <object>objects\obj_debug</object>
       <object>objects\obj_Manager</object>
+      <objects name="Throwable Objects">
+        <object>objects\obj_Kunai</object>
+      </objects>
     </objects>
     <objects name="Player">
       <object>objects\obj_player_skin</object>
@@ -78,7 +83,7 @@
     <objects name="Enemy">
       <object>objects\obj_ROOT_Enemy</object>
       <object>objects\obj_Listener</object>
-      <object>objects\obj_Enemy1</object>
+      <object>objects\obj_Enemy1_skin</object>
     </objects>
     <objects name="Scenery">
       <object>objects\obj_Bush</object>
