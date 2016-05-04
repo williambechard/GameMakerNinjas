@@ -24,6 +24,9 @@
     </sprites>
     <sprites name="Misc">
       <sprite>sprites\spr_Listen</sprite>
+      <sprite>sprites\spr_listen_cone</sprite>
+      <sprite>sprites\spr_Exclamation</sprite>
+      <sprite>sprites\spr_QuestionMark</sprite>
     </sprites>
     <sprite>sprites\spr_Wave</sprite>
     <sprites name="Enemy">
@@ -32,7 +35,7 @@
     <sprites name="Scenery">
       <sprite>sprites\spr_Bush</sprite>
     </sprites>
-    <sprite>sprites\spr_Kunai</sprite>
+    <sprite>sprites\spr_ThrowingStar</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -51,6 +54,7 @@
     <scripts name="Enemy">
       <script>scripts\SoundWaveAdd.gml</script>
       <script>scripts\scr_enemy_see_player.gml</script>
+      <script>scripts\scr_awareness_state.gml</script>
     </scripts>
   </scripts>
   <objects name="objects">
@@ -84,6 +88,8 @@
       <object>objects\obj_ROOT_Enemy</object>
       <object>objects\obj_Listener</object>
       <object>objects\obj_Enemy1_skin</object>
+      <object>objects\obj_QuestionMark</object>
+      <object>objects\obj_Exclamation</object>
     </objects>
     <objects name="Scenery">
       <object>objects\obj_Bush</object>

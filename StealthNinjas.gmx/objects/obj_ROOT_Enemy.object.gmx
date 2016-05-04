@@ -30,10 +30,24 @@ idirection = direction;
 alert=false;
 targetDirection=0;
 
-sight_cone_left = 60;
-sight_cone_right = -60;
+awareness = 0;
+
+direction_cone_left=0;
+direction_cone_righ=0;
+
+sight_cone_left = 30;
+sight_cone_right = -30;
+
+sight_limit = 128;
 
 skin = instance_create(x,y,obj_Enemy1_skin);
+alert = instance_create(x,y-8,obj_Exclamation);
+question = instance_create(x,y-8,obj_QuestionMark);
+
+//deactivate alert and question
+instance_deactivate_object(alert);
+instance_deactivate_object(question);
+
 
 skin.parent = id;
 
@@ -62,27 +76,118 @@ in_cone=false;
             <kind>1</kind>
             <string>//Listen.x = x;
 //Listen.y = y;
-iangle = image_angle;
+
+//adjust direction cone
+    direction_cone_left  = direction + sight_cone_left;
+    if( direction_cone_left  &gt; 359){ direction_cone_left  =  direction_cone_left  -359};
+    direction_cone_right = direction +sight_cone_right;
+    if(direction_cone_right&lt;0){direction_cone_right = 359 + direction_cone_right};
+ 
+    
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>iangle = image_angle;
 idirection = direction;
 //if alerted turn toward sound
 
-scr_enemy_see_player();
 
-if(alert &amp;&amp; !in_cone)
+//show_debug_message(string(direction_cone_right));
+
+//check to see if we see player
+if(!scr_enemy_see_player())
 {
- //image_angle = point_direction(x,y,obj_player.x,obj_player.y);   
- 
- //increment direction toward goal
- 
- //show_debug_message(string(targetDirection));
- //image_angle = targetDirection;
-// timeline_index = tl_RotateToSound;
-// timeline_position = 0;
-// timeline_running = true;
-// timeline_loop = false;
-scr_gradually_turn(self.id, targetDirection, 10.0, 1.0);
- 
+    //ok player not seen safe to hear 
+    if(alert) //did the obj_Listener set alert becuase it detected a obj_soundWave?
+    {
+              //? if not !
+            if(awareness==0)
+            {
+                awareness =1;
+            }
+            
+            //attempt to set awareness state
+            scr_awareness_state(question, alert);
+            
+    
+        //even if we heard a sound wave we may need to check if we are already looking
+        if(scr_gradually_turn(self.id, targetDirection, 10.0, 1.0)){
+        alert=false;
+        awareness = 0;
+        scr_awareness_state(question, alert);
+        }
+    }else if(awareness==2)
+    {
+        awareness =0;
+        scr_awareness_state(question, alert);
+    }
+}else{
+
+alert =false;
+
+    if(awareness!=2){
+        awareness=2;
+        scr_awareness_state(question, alert);
+    
+    }
+    
 }
+
+//I think the probably is multiple sound waves - perhaps shut off hearing for a few seconds\
+// or make sure once a sound wave is heard it isnt hear again
+
+//scr_gradually_turn(self.id, targetDirection, 10.0, 1.0)
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="73">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+//draw_line(x,y,x+lengthdir_x(sight_limit,direction_cone_left),y+lengthdir_y(sight_limit,direction_cone_left));
+//draw_line(x,y,x+lengthdir_x(sight_limit,direction_cone_right),y+lengthdir_y(sight_limit,direction_cone_right));
+
+draw_sprite_ext(spr_listen_cone,-1,x,y, 1.0, 1.0, direction, c_white, 0.2);
+draw_text(x,y+14, awareness);
+draw_text(x,y+24, string(alert));
+
+
 </string>
           </argument>
         </arguments>

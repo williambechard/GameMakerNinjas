@@ -94,7 +94,7 @@ if(mouse_check_button_pressed(mb_right))
     
     //rotate object
     ThrownItem.direction = point_direction(x,y,mouse_x, mouse_y);
-    show_debug_message(string(skin.direction));
+   
     
     ThrownItem.image_angle = skin.image_angle;
     //now throw

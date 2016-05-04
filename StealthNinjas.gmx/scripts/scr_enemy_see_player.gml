@@ -2,9 +2,13 @@ if(!collision_line(x,y, obj_player.x, obj_player.y, col_solid_block, false, true
 {
     //set vision cone
     cone_left = skin.image_angle + sight_cone_left;
-    if(cone_left > 3569){cone_left = cone_left -359};
+    if(cone_left > 359){cone_left = cone_left -359};
     cone_right = skin.image_angle+sight_cone_right;
     if(cone_right<0){cone_right = 359 + cone_right};
+    
+
+    
+
     
     //get angel to player
     p_angle = point_direction(x,y, obj_player.x, obj_player.y);
@@ -30,10 +34,13 @@ if(!collision_line(x,y, obj_player.x, obj_player.y, col_solid_block, false, true
         
         //get player visibility
         
-       // if(dist_to_player < 5){
-       direction = point_direction(x,y,obj_player.x,obj_player.y);
-       //};
-    
-    }
+       if(dist_to_player <= sight_limit){
+            //direction = point_direction(x,y,obj_player.x,obj_player.y);
+            direction =  point_direction(x,y,obj_player.x,obj_player.y);
+            return true;
+       }
+  }
+  
+  return false;
 
 }
