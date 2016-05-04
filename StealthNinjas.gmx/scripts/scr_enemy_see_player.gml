@@ -1,4 +1,4 @@
-if(!collision_line(x,y, obj_player.x, obj_player.y, col_solid_block, false, true))//if yes...
+if(!collision_line(x,y, obj_player.x, obj_player.y, col_solid_block, true, true))//if yes...
 {
     //set vision cone
     cone_left = skin.image_angle + sight_cone_left;
@@ -17,18 +17,26 @@ if(!collision_line(x,y, obj_player.x, obj_player.y, col_solid_block, false, true
     if(cone_right > cone_left)
     {
         if(p_angle <= cone_left or p_angle >= cone_right){ in_cone = true};
-        else{in_cone = false};
+        else{
+           // debugText ="Not in Cone";
+           in_cone = false;
+        }
     }
     else
     {
         if(p_angle <= cone_left and p_angle >= cone_right ){ in_cone = true};
-        else {in_cone = false};
+        else {
+          // debugText ="Not in Cone";
+           in_cone = false;
+        }
     }
 
     //do stuff if they are
     
     if(in_cone)
     {
+        //debugText = "In Cone";
+        
         //get the distance to the player
         dist_to_player = point_distance(x,y,obj_player.x, obj_player.y);
         

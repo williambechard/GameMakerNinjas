@@ -32,6 +32,8 @@ targetDirection=0;
 
 awareness = 0;
 
+debugText ="";
+
 direction_cone_left=0;
 direction_cone_righ=0;
 
@@ -133,10 +135,12 @@ if(!scr_enemy_see_player())
         if(scr_gradually_turn(self.id, targetDirection, 10.0, 1.0)){
         alert=false;
         awareness = 0;
+        //show_debug_message("Done turning so awareness =0");
         //scr_awareness_state(question, alert);
         }
     }else if(awareness==2)
     {
+        //show_debug_message("Was awareness 2, but no alert now so awareness =0");
         awareness =0;
        // scr_awareness_state(question, alert);
     }
@@ -195,7 +199,8 @@ switch(awareness)
     draw_sprite(spr_Exclamation, -1, x,y - 8);
     break;
 }
-//draw_text(x,y+14, "state =" + string(awareness));
+
+draw_text(x,y+14,debugText);
 //draw_text(x,y+28, "Alert level=" + string(alert));
 
 
