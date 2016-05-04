@@ -41,12 +41,12 @@ sight_cone_right = -30;
 sight_limit = 128;
 
 skin = instance_create(x,y,obj_Enemy1_skin);
-alert = instance_create(x,y-8,obj_Exclamation);
-question = instance_create(x,y-8,obj_QuestionMark);
+//alert = instance_create(x,y-8,obj_Exclamation);
+//question = instance_create(x,y-8,obj_QuestionMark);
 
 //deactivate alert and question
-instance_deactivate_object(alert);
-instance_deactivate_object(question);
+//instance_deactivate_object(alert);
+//instance_deactivate_object(question);
 
 
 skin.parent = id;
@@ -126,19 +126,19 @@ if(!scr_enemy_see_player())
             }
             
             //attempt to set awareness state
-            scr_awareness_state(question, alert);
+            //scr_awareness_state(question, alert);
             
     
         //even if we heard a sound wave we may need to check if we are already looking
         if(scr_gradually_turn(self.id, targetDirection, 10.0, 1.0)){
         alert=false;
         awareness = 0;
-        scr_awareness_state(question, alert);
+        //scr_awareness_state(question, alert);
         }
     }else if(awareness==2)
     {
         awareness =0;
-        scr_awareness_state(question, alert);
+       // scr_awareness_state(question, alert);
     }
 }else{
 
@@ -146,7 +146,7 @@ alert =false;
 
     if(awareness!=2){
         awareness=2;
-        scr_awareness_state(question, alert);
+        //scr_awareness_state(question, alert);
     
     }
     
