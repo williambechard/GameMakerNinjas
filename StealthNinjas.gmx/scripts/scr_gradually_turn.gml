@@ -42,22 +42,27 @@ var leastAccurateAim = 10;
 if(angleDiff > leastAccurateAim * accuracy)
 {
     objToTurn.direction -= turnSpeed * delta_time;
+    
+    if(objToTurn.direction <= target +1 and objToTurn.direction >= target -1)
+    {
+        objToTurn.direction = target;
+        return true;
+    }
 }
 else if(angleDiff < leastAccurateAim * accuracy)
 {
     objToTurn.direction += turnSpeed * delta_time;
+    
+    if(objToTurn.direction <= target +1 and objToTurn.direction >= target -1)
+    {
+        objToTurn.direction = target;
+        return true;
+    }
 }
 
+return false;
 
 
-if(round(objToTurn.direction) == round(target))
-{
-show_debug_message("done with turn");
-return (true);
-}
-else{
-return(false);
-}
 
 
 

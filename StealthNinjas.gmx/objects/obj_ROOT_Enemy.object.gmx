@@ -184,8 +184,19 @@ alert =false;
 //draw_line(x,y,x+lengthdir_x(sight_limit,direction_cone_right),y+lengthdir_y(sight_limit,direction_cone_right));
 
 draw_sprite_ext(spr_listen_cone,-1,x,y, 1.0, 1.0, direction, c_white, 0.2);
-draw_text(x,y+14, awareness);
-draw_text(x,y+24, string(alert));
+
+switch(awareness)
+{
+    case 1:
+    draw_sprite(spr_QuestionMark, -1, x,y - 8);
+    break;
+    
+    case 2:
+    draw_sprite(spr_Exclamation, -1, x,y - 8);
+    break;
+}
+//draw_text(x,y+14, "state =" + string(awareness));
+//draw_text(x,y+28, "Alert level=" + string(alert));
 
 
 </string>
