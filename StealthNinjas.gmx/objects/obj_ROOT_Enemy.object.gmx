@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>self</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,7 +25,27 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>iangle = image_angle;
+            <string>// if there is not a guard controller go ahead and make one
+if(!instance_exists(obj_guard_controller)){ instance_create(0,0, obj_guard_controller)};
+
+// create a path for navication
+path = path_add();
+investigating=false;
+
+see_Enemy = false;
+
+// set investigate
+investigate_x=0;
+investigate_y=0;
+
+// set return
+return_x =x;
+return_y = y;
+
+// move speed
+move_speed =0.5;
+
+iangle = image_angle;
 idirection = direction;
 alert=false;
 targetDirection=0;
@@ -59,6 +79,32 @@ in_cone=false;
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+//return to start
+
+scr_enemy_return();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="2">
       <action>
         <libid>1</libid>
@@ -79,12 +125,16 @@ in_cone=false;
             <string>//Listen.x = x;
 //Listen.y = y;
 
+
+//skin.direction = direction;
+
 //adjust direction cone
     direction_cone_left  = direction + sight_cone_left;
     if( direction_cone_left  &gt; 359){ direction_cone_left  =  direction_cone_left  -359};
     direction_cone_right = direction +sight_cone_right;
     if(direction_cone_right&lt;0){direction_cone_right = 359 + direction_cone_right};
  
+
     
 </string>
           </argument>
@@ -112,54 +162,105 @@ in_cone=false;
 idirection = direction;
 //if alerted turn toward sound
 
-
 //show_debug_message(string(direction_cone_right));
+
 
 //check to see if we see player
 if(!scr_enemy_see_player())
 {
+see_Enemy=false;
+//path_end();
     //ok player not seen safe to hear 
     if(alert) //did the obj_Listener set alert becuase it detected a obj_soundWave?
     {
               //? if not !
-            if(awareness==0)
-            {
+            //if(awareness==0)
+            //{
                 awareness =1;
-            }
-            
-            //attempt to set awareness state
-            //scr_awareness_state(question, alert);
-            
-    
-        //even if we heard a sound wave we may need to check if we are already looking
+           //}
+        //show_debug_message("WE STOPPED at 2");
+        //path_end();
+       
+        //Check if we are done turning
         if(scr_gradually_turn(self.id, targetDirection, 10.0, 1.0)){
         alert=false;
-        awareness = 0;
-        //show_debug_message("Done turning so awareness =0");
-        //scr_awareness_state(question, alert);
+        //awareness = 0;
+        show_debug_message("WE STOPPED at 3");
+            //now check out the source
+            path_end();
+            investigating = true;
+            scr_enemy_investigate();
+            
+           // show_debug_message("Starting to investigate");
+           // show_debug_message("inv_x = " + string(investigate_x) + " inv_y = " + string(investigate_y));
+           // show_debug_message("x=" + string(x) + " y=" + string(y));
         }
-    }else if(awareness==2)
-    {
-        //show_debug_message("Was awareness 2, but no alert now so awareness =0");
-        awareness =0;
-       // scr_awareness_state(question, alert);
+        
+        
+   
+        
     }
 }else{
 
-alert =false;
 
-    if(awareness!=2){
-        awareness=2;
-        //scr_awareness_state(question, alert);
-    
-    }
-    
+if(see_Enemy==false)
+{
+            //now check out the source
+            path_end();
+            //investigating = true;
+            
+            //set our inv point
+            investigate_x = obj_player.x;
+            investigate_y = obj_player.y;
+            scr_enemy_investigate();
+            see_Enemy=true;
+            
+            show_debug_message("WE Should be moving now");
 }
 
-//I think the probably is multiple sound waves - perhaps shut off hearing for a few seconds\
-// or make sure once a sound wave is heard it isnt hear again
 
-//scr_gradually_turn(self.id, targetDirection, 10.0, 1.0)
+        
+        
+    //still see player so keep looking at him
+    direction = point_direction(x,y, obj_player.x, obj_player.y);
+}
+
+
+
+ if(investigating)
+ {
+        //either seen or heard a sound
+        awareness=1;
+        //check if we are close enough to stop following
+        if(point_distance(x,y, investigate_x, investigate_y) &lt;= 16)
+        {
+            //we are done with our ove
+            investigating =false;
+            show_debug_message("WE STOPPED at 4");
+            path_end();
+            alarm[0]=120;
+             awareness=0;
+        }
+ }else{
+ 
+ 
+    if(see_Enemy)
+    {
+    awareness = 2;
+    //check if we are close enough to stop following
+        if(point_distance(x,y, obj_player.x, obj_player.y) &lt;= 16)
+        {
+            //we are done with our ove
+            see_Enemy=false;
+            show_debug_message("WE STOPPED at 5");
+            path_end();
+            alarm[0]=120;
+        }
+        
+         //still see player so keep looking at him
+    direction = point_direction(x,y, obj_player.x, obj_player.y);
+    }
+}
 
 </string>
           </argument>
@@ -200,10 +301,33 @@ switch(awareness)
     break;
 }
 
-draw_text(x,y+14,debugText);
+//draw_text(x,y+14,debugText);
 //draw_text(x,y+28, "Alert level=" + string(alert));
 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_path(path, x, y, true);
 </string>
           </argument>
         </arguments>

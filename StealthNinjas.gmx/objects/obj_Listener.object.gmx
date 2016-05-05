@@ -106,7 +106,13 @@ if(instance_exists(obj_soundWave))
             (k).already_heard = true;
             //Parent = instance_find(obj_ROOT_Enemy, ParentID);
             alert=true;
+    
             
+            //set our investigation point
+            investigate_x = (k).x;
+            investigate_y = (k).y;
+            
+            instance_create(investigate_x, investigate_y, obj_Debug_Sprite);
   
             targetDirection = round(point_direction(x,y, (k).x, (k).y));
             

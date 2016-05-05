@@ -3,8 +3,8 @@
   <caption></caption>
   <width>640</width>
   <height>640</height>
-  <vsnap>8</vsnap>
-  <hsnap>8</hsnap>
+  <vsnap>16</vsnap>
+  <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
   <persistent>0</persistent>
@@ -123,7 +123,7 @@
     <instance objName="col_solid_block" x="536" y="264" name="inst_2354DEB3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="col_solid_block" x="536" y="248" name="inst_8ECD314C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="col_solid_block" x="536" y="232" name="inst_DBD23762" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player" x="336" y="368" name="inst_9739288B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player" x="352" y="368" name="inst_9739288B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_debug" x="320" y="416" name="inst_77F73463" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_cupboard" x="208" y="368" name="inst_5B926DD8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_cupboard" x="208" y="400" name="inst_96838445" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -212,12 +212,10 @@
     <instance objName="obj_Manager" x="168" y="96" name="inst_EFB0EF4E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Listener" x="464" y="264" name="inst_4765B8D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Listener" x="271" y="400" name="inst_0DAFA103" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Bush" x="416" y="352" name="inst_EC753642" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Bush" x="432" y="352" name="inst_AA18699B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Bush" x="448" y="352" name="inst_768A18D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Bush" x="416" y="368" name="inst_47DEF1DB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="col_solid_block" x="440" y="361" name="inst_192DF097" locked="0" code="" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="col_solid_block" x="425" y="377" name="inst_4876E750" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Bush" x="408" y="344" name="inst_EC753642" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Bush" x="424" y="344" name="inst_AA18699B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Bush" x="440" y="344" name="inst_768A18D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Bush" x="408" y="360" name="inst_47DEF1DB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="background0" x="160" y="256" w="16" h="16" xo="0" yo="16" id="10000001" name="inst_6C51B5E4" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
