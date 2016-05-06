@@ -159,7 +159,14 @@ if(instance_exists(obj_soundWave))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>//draw debug text
+
+draw_text_transformed(x + 16,y-12, "ALERT "+ string(alert), 0.25, 0.25, 0);
+draw_text_transformed(x + 16,y-8, "see_Eenmy "+ string(see_Enemy), 0.25, 0.25, 0);
+draw_text_transformed(x + 16,y-4, "investigate_x "+ string(investigate_x), 0.25, 0.25, 0);
+draw_text_transformed(x + 16,y, "awareness "+ string(awareness), 0.25, 0.25, 0);
+draw_text_transformed(x + 16,y+4, "path_position "+ string(path_position), 0.25, 0.25, 0);
+
 draw_circle(x, y, 64, true);
 </string>
           </argument>

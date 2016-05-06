@@ -189,7 +189,7 @@ see_Enemy=false;
             //now check out the source
             path_end();
             investigating = true;
-            scr_enemy_investigate();
+            scr_enemy_investigate(investigate_x, investigate_y);
             
            // show_debug_message("Starting to investigate");
            // show_debug_message("inv_x = " + string(investigate_x) + " inv_y = " + string(investigate_y));
@@ -205,14 +205,14 @@ see_Enemy=false;
 
 if(see_Enemy==false)
 {
-            //now check out the source
+            //immediately stop if we were on a path to investigate
             path_end();
             //investigating = true;
-            
+            alarm[0]=-1;
             //set our inv point
-            investigate_x = obj_player.x;
-            investigate_y = obj_player.y;
-            scr_enemy_investigate();
+            //investigate_x = obj_player.x;
+            //investigate_y = obj_player.y;
+            scr_enemy_investigate(obj_player.x, obj_player.y);
             see_Enemy=true;
             
             show_debug_message("WE Should be moving now");
