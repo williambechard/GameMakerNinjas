@@ -28,6 +28,8 @@
             <string>// if there is not a guard controller go ahead and make one
 if(!instance_exists(obj_guard_controller)){ instance_create(0,0, obj_guard_controller)};
 
+
+debugDraw=false;
 // create a path for navication
 path = path_add();
 investigating=false;
@@ -43,7 +45,7 @@ return_x =x;
 return_y = y;
 
 // move speed
-move_speed =0.5;
+move_speed =0.25;
 
 iangle = image_angle;
 idirection = direction;
@@ -168,99 +170,77 @@ idirection = direction;
 //check to see if we see player
 if(!scr_enemy_see_player())
 {
-see_Enemy=false;
-//path_end();
-    //ok player not seen safe to hear 
+
     if(alert) //did the obj_Listener set alert becuase it detected a obj_soundWave?
     {
-              //? if not !
-            //if(awareness==0)
-            //{
-                awareness =1;
-           //}
-        //show_debug_message("WE STOPPED at 2");
-        //path_end();
-       
+        //?
+        awareness =1;
+    
         //Check if we are done turning
-        if(scr_gradually_turn(self.id, targetDirection, 10.0, 1.0)){
-        alert=false;
-        //awareness = 0;
-        show_debug_message("WE STOPPED at 3");
-            //now check out the source
-            path_end();
-            investigating = true;
-            scr_enemy_investigate(investigate_x, investigate_y);
+        if(!investigating){
+            path_end(); //this is in case we were done inv and waiting to return but heard another noise
+            alarm[0]=-1; //dito
             
-           // show_debug_message("Starting to investigate");
-           // show_debug_message("inv_x = " + string(investigate_x) + " inv_y = " + string(investigate_y));
-           // show_debug_message("x=" + string(x) + " y=" + string(y));
+            if(scr_gradually_turn(self.id, targetDirection, 10.0, 1.0))
+            {
+
+                // We are now investigating
+                investigating = true;
+            
+                //now check out the source
+                //ensure there is a path
+                //if mp_grid_path(obj_,path,x,y,x,y,true){
+                if(!scr_enemy_investigate(investigate_x, investigate_y))
+                {
+                    show_debug_message("no path found");
+                }
+                //}
+            }
+        }else{ //We are investigating IE we are done turning and now moving toward investigate_x &amp; _y
+            
+            
+            if(path_position==1) //Check if we are close enough to our target
+            {
+                //We are, so we are done with our investigate
+                investigating =false;
+                //show_debug_message("WE STOPPED at 4");
+                path_end();
+                alert=false;
+                alarm[0]=120;
+                awareness=0;
+            }
+            
+            //
         }
         
-        
-   
-        
+    }else{
+    if(awareness==2){ //IE was just seen
+    //possible player was seen but now not, so need to return to position
+        alarm[0]=120;
+        awareness =1;
+        //path_end();
     }
+} 
+    
 }else{
-
-
-if(see_Enemy==false)
-{
-            //immediately stop if we were on a path to investigate
-            path_end();
-            //investigating = true;
-            alarm[0]=-1;
-            //set our inv point
-            //investigate_x = obj_player.x;
-            //investigate_y = obj_player.y;
-            scr_enemy_investigate(obj_player.x, obj_player.y);
-            see_Enemy=true;
-            
-            show_debug_message("WE Should be moving now");
-}
-
-
+    investigating=false;
+    alarm[0]=-1;
+    awareness = 2;
+    alert=false;
+    //could be if(investigating)
+    path_end();
+    path_position=0;
         
-        
+    //Only chase player if far enough away
+    if(point_distance(x,y, obj_player.x, obj_player.y) &gt;=32){
+    mp_potential_step(obj_player.x, obj_player.y, move_speed, col_solid_block);
+    }    
     //still see player so keep looking at him
     direction = point_direction(x,y, obj_player.x, obj_player.y);
 }
 
 
-
- if(investigating)
- {
-        //either seen or heard a sound
-        awareness=1;
-        //check if we are close enough to stop following
-        if(point_distance(x,y, investigate_x, investigate_y) &lt;= 16)
-        {
-            //we are done with our ove
-            investigating =false;
-            show_debug_message("WE STOPPED at 4");
-            path_end();
-            alarm[0]=120;
-             awareness=0;
-        }
- }else{
  
- 
-    if(see_Enemy)
-    {
-    awareness = 2;
-    //check if we are close enough to stop following
-        if(point_distance(x,y, obj_player.x, obj_player.y) &lt;= 16)
-        {
-            //we are done with our ove
-            see_Enemy=false;
-            show_debug_message("WE STOPPED at 5");
-            path_end();
-            alarm[0]=120;
-        }
-        
-         //still see player so keep looking at him
-    direction = point_direction(x,y, obj_player.x, obj_player.y);
-    }
-}
 
 </string>
           </argument>
@@ -327,7 +307,9 @@ switch(awareness)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_path(path, x, y, true);
+            <string>if(debugDraw){
+draw_path(path, x, y, true);
+}
 </string>
           </argument>
         </arguments>

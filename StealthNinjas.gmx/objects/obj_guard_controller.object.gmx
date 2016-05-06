@@ -26,9 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>//creat a grid our guards can use for pathfinding
-guard_grid = mp_grid_create(0,0, room_width/16, room_height/16,16,16);
+guard_grid = mp_grid_create(0,0, room_width/8, room_height/8,8,8);
 depth = -1099
-
+debugDraw=false;
 </string>
           </argument>
         </arguments>
@@ -51,19 +51,22 @@ depth = -1099
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_alpha(0.5);
+            <string>
+if(debugDraw){
+draw_set_alpha(0.5);
 mp_grid_draw(guard_grid);
 
-for (var i = 0; i &lt; room_width; i+=16;)
+for (var i = 0; i &lt; room_width; i+=8;)
 {
     draw_line(i,0,i,room_height);
 }
-for(i=0; i &lt; room_height; i +=16;)
+for(i=0; i &lt; room_height; i +=8;)
 {
     draw_line(0,i,room_width, i);
 }
 
 draw_set_alpha(1);
+}
 
 
 </string>
