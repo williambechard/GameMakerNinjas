@@ -199,7 +199,7 @@ if(!scr_enemy_see_player())
         }else{ //We are investigating IE we are done turning and now moving toward investigate_x &amp; _y
             
             
-            if(path_position==1) //Check if we are close enough to our target
+            if(path_position&gt;=.8) //Check if we are close enough to our target
             {
                 //We are, so we are done with our investigate
                 investigating =false;
